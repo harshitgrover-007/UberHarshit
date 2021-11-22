@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import tw from "tailwind-styled-components/dist/tailwind";
 import { carList } from "../data/carList";
 import Link from "next/link";
@@ -8,13 +8,13 @@ const RideSelector = ({ pickCoordinates, dropCoordinates }) => {
   const [rideDuration, setRideDuration] = useState([0])
 
   useEffect(() => {
-    rideDuration = fetch(
+    const ref = useRef( rideDuration = fetch(
       `https://api.mapbox.com/directions/v5/mapbox/driving/${pickCoordinates[0]}, ${pickCoordinates[1]}; ${dropCoordinates[0]}, ${dropCoordinates[1]}?access_token=pk.eyJ1IjoiaGFyc2hpdGdyb3ZlcjAwNyIsImEiOiJja3cwanFnNHcwemwxMnhub3NmdmF6bzVwIn0.Lm6wj8mNTiCa4BlmA2lBNg`
     ).then((res) => res.json())
       .then(data => {
         setRideDuration(data.routes[0].duration / 100 )
       
-    } )
+    } ))
   }, [pickCoordinates, dropCoordinates])
  
   return (
@@ -25,7 +25,7 @@ const RideSelector = ({ pickCoordinates, dropCoordinates }) => {
           <Car key={index}>
             
               <CarImage src={car.imgUrl} />
-            <Link href="/reserve">
+            <Link passHref="/reserve">
             <CarDetails>
               <Service>{car.service}</Service>
               <Time>5 min away</Time>

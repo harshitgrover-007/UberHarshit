@@ -1,4 +1,4 @@
-export default CArList = [
+export default carList = [
   
   {
     imgUrl: 'https://i.ibb.co/cyvcpfF/uberx.png',

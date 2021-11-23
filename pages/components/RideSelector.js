@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import tw from "tailwind-styled-components/dist/tailwind";
-import { carList } from "../carList";
-
+import { carList } from "./carList";
 import Link from "next/link";
 
 const RideSelector = ({ pickCoordinates, dropCoordinates }) => {
@@ -24,14 +23,13 @@ const RideSelector = ({ pickCoordinates, dropCoordinates }) => {
       <CarList>
         {carList.map((car, index) => (
           <Car key={index}>
-            
-              <CarImage src={car.imgUrl} />
+            <CarImage src={car.imgUrl} />
             <Link href="/reserve" passHref>
-            <CarDetails>
-              <Service>{car.service}</Service>
-              <Time>5 min away</Time>
+              <CarDetails>
+                <Service>{car.service}</Service>
+                <Time>5 min away</Time>
               </CarDetails>
-              </Link>
+            </Link>
             <Price>{"$" + (rideDuration * car.multiplier).toFixed(2)}</Price>
           </Car>
         ))}

@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import tw from "tailwind-styled-components/dist/tailwind";
-import { carList } from "../carList";
+import { CArList } from "../carList";
 
 import Link from "next/link";
 
@@ -22,7 +22,7 @@ const RideSelector = ({ pickCoordinates, dropCoordinates }) => {
     <Wrapper>
       <Titl>Choose a ride, or swipe up for more</Titl>
       <CarList>
-        {carList.map((car, index) => (
+        {CArList.map((car, index) => (
           <Car key={index}>
             
               <CarImage src={car.imgUrl} />

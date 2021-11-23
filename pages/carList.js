@@ -1,4 +1,4 @@
-export const CArList = [
+export default CArList = [
   
   {
     imgUrl: 'https://i.ibb.co/cyvcpfF/uberx.png',
